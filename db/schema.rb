@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_114927) do
   create_table "batches", id: :string, limit: 7, force: :cascade do |t|
     t.string "file_guid", null: false
     t.boolean "status", default: true
+    t.date "creation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["file_guid"], name: "index_batches_on_file_guid"

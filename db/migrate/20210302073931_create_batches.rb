@@ -5,6 +5,7 @@ class CreateBatches < ActiveRecord::Migration[5.2]
       t.string :id, limit: 7, primary_key: true
       # t.decimal :id, precision: 7, scale: 0, primary_key: true
       t.boolean :status, default: true
+      t.date :creation_date
       t.index :file_guid
 
       t.timestamps
