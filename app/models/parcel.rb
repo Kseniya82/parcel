@@ -10,6 +10,10 @@ class Parcel < ApplicationRecord
             presence: true
   validates :invoice_operation_number, length: { maximum: 9 }
   validates :company_code, length: { is: 4 }
+  validates :company_code,
+            :invoice_operation_number,
+            :parcel_code,
+            format:  /\A\d+\z/ 
   validates :parcel_code, length: { is: 15 }
   validates :parcel_price, 
              numericality: { only_integer: true, 
