@@ -28,7 +28,6 @@ class Parcel < ApplicationRecord
   end
 
   def count_product_in_current_parcel
-    byebug
     self.class.where(invoice_operation_number: self.invoice_operation_number).count
   end
 end

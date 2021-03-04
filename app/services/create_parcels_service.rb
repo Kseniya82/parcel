@@ -25,6 +25,7 @@ class CreateParcelsService
     else
       create_parcels
     end
+    rescue ActiveRecord::RecordInvalid
     parcels_count = batch.parcels.count
     LOGGER.info 'Bad file content' if parcels_count == 0
     batch.update!(status: false)

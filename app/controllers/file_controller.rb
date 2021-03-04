@@ -1,9 +1,8 @@
 class FileController < ApplicationController
-  after_action :save_to_db only: :upload
+  after_action :save_to_db, only: :upload
   def new; end
 
   def upload
-    uploaded_file = params[:file]
     File.open(file_path, 'wb') do |file|
       file.write(uploaded_file.read)
     end
@@ -13,11 +12,15 @@ class FileController < ApplicationController
 
   private
 
+  def uploaded_file
+    params[:file]
+  end
+
   def file_path
     Rails.root.join('public', 'uploads', uploaded_file.original_filename)
   end
 
   def save_to_db
-    CreateParcelsService.new(file_path).call
+    CreateParcelsService.new(file_path).call if File.exist?(file_path)
   end
 end

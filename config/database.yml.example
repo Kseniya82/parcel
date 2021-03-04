@@ -82,4 +82,4 @@ production:
   <<: *default
   database: xml_to_db_production
   username: xml_to_db
-  password: <%= ENV['PARCEL_DATABASE_PASSWORD'] %>
+  password: <%= ENV['XML_TO_DB_DATABASE_PASSWORD'] %>
