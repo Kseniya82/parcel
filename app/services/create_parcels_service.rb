@@ -23,7 +23,6 @@ class CreateParcelsService
     if batch.errors.present?
       Logger.info "Batch not created: #{batch.errors}"
     else
-      byebug
       create_parcels
     end
     parcels_count = batch.parcels.count
@@ -43,7 +42,6 @@ class CreateParcelsService
 
   def create_parcels
     ActiveRecord::Base.transaction do
-      byebug
       data_hash.dig(:root, :file_data, :invoice).each do |data_parcel|
         #преобразуем в массив, если товар в посылке 1 и избавляемся от вложенности
         [data_parcel.dig(:invoice_data)].flatten.each do |data_product|
